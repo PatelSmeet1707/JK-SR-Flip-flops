@@ -1,117 +1,57 @@
-# JK-SR-Flip-flops
+2. JK Flip-Flop ===================================================================================================================================
 
-#include <stdio.h>
-typedef char bit;
-
-
-bit jk(bit J,bit K,bit Q)
-{
-    return J&~(Q)|Q&~(K);
-}
-
-
-int main()
-{
-    int i,j,k,a,res=0;
-    int x,y,z;
-    char b;
-    printf("1.Truth Table of JK  flip flop");
-    printf("\n2.I/O operation\n");
-    printf("Enter your choice: ");
-    scanf("%d",&a);
+i=0
+while i<8:
     
-    switch(a) 
-    {
-        case 1:
-            printf("J  K  Q(t) | Q(t+1)\n");
-            for(i=0;i<2;i++)
-            {
-                for(j=0;j<2;j++)
-                {
-                    for(k=0;k<2;k++)
-                    {
-                        res=jk(i,j,k);
-                        printf("%d  %d  %d    |",i,j,k);
-                        printf("  %d\n",res);
-   
-                    }
-                }
-            }
-            break;
-  
-        case 2:
-            printf("Enter the value of J,K,Q(t):");
-            scanf("%d%d%d",&x,&y,&z);
- 
-            res=jk(x,y,z);
-            printf("Q(t+1)= %d\n\n",res);
+    J = int(input('Enter state <0/1> :'))
+    K = int(input('Enter state <0/1> :'))
+    Qp = int(input('Enter state <0/1> :'))
+    
+    if J==0 and K==0 and Qp==0:
+        ans=0
+        print(ans,',Hold state')
+    elif J==0 and K==0 and Qp==1:
+        ans=1
+        print(ans,',Hold state')
+    elif (J==0 and K==1 and Qp==0) or (J==0 and K==1 and Qp==1):
+        ans=0
+        print(ans,',Reset state')
+    elif (J==1 and K==0 and Qp==0) or (J==1 and K==0 and Qp==1):
+        ans=1
+        print(ans,',Set state')
+    elif J==1 and K==1 and Qp==0:
+        ans=1
+        print(ans,',Toggle state')
+    elif J==1 and K==1 and Qp==0:
+        ans=0
+        print(ans,',Toggle state')
+    else:
+        print("Enter correct values !")
 
 
-            break;
+3. SR Flip-Flop ===================================================================================================================================
 
-
-        default:
-            printf("invalid input");   
-         
-    }
-    }
-    printf("do you want to continue(Y/N):");
-    scanf(" %c",&b);
-    if(b=='Y'||b=='y')
-    {
-        main();
-    }
-    else
-    {
-        return 0;
-    }
-}
-
-
-
-
-// S-R FLIP-FLOP CALCULATER .
-
-
-#include <stdio.h>
-#include <stdbool.h>
-
-
-int main() {
-    bool S, R, Q, Q_bar;
-    printf("Enter S and R values (0 or 1): ");
-    scanf("%d %d", &S, &R);
-
-
-    // Check for invalid input
-    if ((S == 1 && R == 1) || (S == 0 && R == 0)) 
-    {
-        printf("Invalid input: S and R cannot both be 1 or 0.\n");
-        return 1;
-    }
-
-
-    // Implement S-R flip-flop
-    if (S == 1 && R == 0) 
-    {
-        Q = 1;
-        Q_bar = 0;
-    } 
-    else if (S == 0 && R == 1) 
-    {
-        Q = 0;
-        Q_bar = 1;
-    } 
-    else 
-    {
-        printf("Invalid input: S and R cannot both be 1 or 0.\n");
-        return 1;
-    }
-
-
-    // Output Q and Q_bar values
-    printf("Q = %d, Q_bar = %d\n", Q, Q_bar);
-
-
-    return 0;
-}
+i=0
+while i<8:
+    
+    S = int(input('Enter state SET <0/1> :'))
+    R = int(input('Enter state RESET <0/1> :'))
+    Qp = int(input('Enter state <0/1> :'))
+    
+    if S==0 and R==0 and Qp==0:
+        ans=0
+        print(ans,',Hold state')
+    elif S==0 and R==0 and Qp==1:
+        ans=1
+        print(ans,',Hold state')
+    elif (S==0 and R==1 and Qp==0) or (S==0 and R==1 and Qp==1):
+        ans=0
+        print(ans,',Reset state')
+    elif (S==1 and R==0 and Qp==0) or (S==1 and R==0 and Qp==1):
+        ans=1
+        print(ans,',Set state')
+    elif S==1 and R==1 and Qp==0 or S==1 and R==1 and Qp==1:
+        ans=1
+        print(ans,',Indeterminate state')
+    else:
+        print("Enter correct values !")
